@@ -9,8 +9,11 @@
   "authentication": {
     "entity": "user",
     "service": "users",
-    "secret": "SMi1P/U83Y8Eunw6I898M5twKXY=",
-    "authStrategies": ["jwt", "local"],
+    "secret": "MYdvaKqZ27qSQzNDHP3kpxICkU0=",
+    "authStrategies": [
+      "jwt",
+      "local"
+    ],
     "jwtOptions": {
       "header": {
         "typ": "access"
@@ -36,6 +39,10 @@
   },
   "postgres": {
     "client": "pg",
-    "connection": "postgres://admin:admin@db:5432/ima"
+    "connection": "postgres://admin:admin@db:5432/ima",
+    "migrations": {},
+    "seeds":{
+      "directory":"../src/db/seeds"
+    }
   }
 }

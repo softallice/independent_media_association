@@ -21,8 +21,6 @@ services:
     restart: always
     ports:
       - ${ADMINER_PORT}:8080
-    environment:
-      - ADMINER_DESIGN:'pappu687'
 
   api:
     init: true

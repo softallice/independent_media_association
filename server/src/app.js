@@ -4,15 +4,11 @@ const compress = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
 const logger = require('./logger');
-const dotenv = require('dotenv')
-
-dotenv.config();
 
 const feathers = require('@feathersjs/feathers');
 const configuration = require('@feathersjs/configuration');
 const express = require('@feathersjs/express');
 const socketio = require('@feathersjs/socketio');
-
 
 
 const middleware = require('./middleware');
@@ -22,7 +18,7 @@ const channels = require('./channels');
 
 const authentication = require('./authentication');
 
-const knex = require('./knex');
+const objection = require('./objection');
 
 const app = express(feathers());
 
@@ -42,9 +38,7 @@ app.use('/', express.static(app.get('public')));
 app.configure(express.rest());
 app.configure(socketio());
 
-
-app.configure(knex);
-
+app.configure(objection);
 
 // Configure other middleware (see `middleware/index.js`)
 app.configure(middleware);
