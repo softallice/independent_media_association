@@ -10,10 +10,7 @@
     "entity": "user",
     "service": "users",
     "secret": "MYdvaKqZ27qSQzNDHP3kpxICkU0=",
-    "authStrategies": [
-      "jwt",
-      "local"
-    ],
+    "authStrategies": ["jwt", "local"],
     "jwtOptions": {
       "header": {
         "typ": "access"
@@ -39,10 +36,12 @@
   },
   "postgres": {
     "client": "pg",
-    "connection": "postgres://admin:admin@db:5432/ima",
-    "migrations": {},
-    "seeds":{
-      "directory":"../src/db/seeds"
+    "connection": "postgres://admin:admin@localhost:5100/ima",
+    "migrations": {
+      "tableName": "knex_migrations"
+    },
+    "seeds": {
+      "directory": "../seeds"
     }
   }
 }

@@ -22,14 +22,14 @@ services:
     ports:
       - ${ADMINER_PORT}:8080
 
-  api:
-    init: true
-    image: ima_api
-    build: ./server
-    restart: always
-    volumes:
-        - ./server:/app:cached
-    ports:
-        - '${PORT}:${PORT}'
+  # api:
+  #   init: true
+  #   image: ima_api
+  #   build: ./server
+  #   restart: always
+  #   volumes:
+  #       - ./server:/app:cached
+  #   ports:
+  #       - '${PORT}:${PORT}'
 
 

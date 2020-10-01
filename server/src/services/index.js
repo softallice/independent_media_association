@@ -1,5 +1,33 @@
 const users = require('./users/users.service.js');
+const author = require('./author/author.service.js');
+const post = require('./post/post.service.js');
+const userPreferences = require('./user_preferences/user_preferences.service.js');
+const userType = require('./user_type/user_type.service.js');
+const imageUrl = require('./image_url/image_url.service.js');
+const keywords = require('./keywords/keywords.service.js');
+const relatedPost = require('./related_post/related_post.service.js');
+const adminSitePreferences = require('./admin_site_preferences/admin_site_preferences.service.js');
+const joinPostAndImages = require('./join__post_and_images/join__post_and_images.service.js');
+const joinPostAndAuthor = require('./join__post_and_author/join__post_and_author.service.js');
+const joinKeywordsAndImages = require('./join__keywords_and_images/join__keywords_and_images.service.js');
+const joinPostAndKeywords = require('./join__post_and_keywords/join__post_and_keywords.service.js');
+const joinUsersAndUserPreferences = require('./join__users_and_user_preferences/join__users_and_user_preferences.service.js');
+const joinUsersAndUserType = require('./join__users_and_user_type/join__users_and_user_type.service.js');
 // eslint-disable-next-line no-unused-vars
 module.exports = function (app) {
   app.configure(users);
+  app.configure(author);
+  app.configure(post);
+  app.configure(userPreferences);
+  app.configure(userType);
+  app.configure(imageUrl);
+  app.configure(keywords);
+  app.configure(relatedPost);
+  app.configure(adminSitePreferences);
+  app.configure(joinPostAndImages);
+  app.configure(joinPostAndAuthor);
+  app.configure(joinKeywordsAndImages);
+  app.configure(joinPostAndKeywords);
+  app.configure(joinUsersAndUserPreferences);
+  app.configure(joinUsersAndUserType);
 };
