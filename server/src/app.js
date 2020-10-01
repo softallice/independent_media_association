@@ -4,6 +4,9 @@ const compress = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
 const logger = require('./logger');
+const dotenv = require('dotenv')
+
+dotenv.config();
 
 const feathers = require('@feathersjs/feathers');
 const configuration = require('@feathersjs/configuration');

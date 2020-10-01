@@ -11,7 +11,7 @@ class Users extends Model {
   static get jsonSchema() {
     return {
       type: 'object',
-      required: ['password'],
+      //required: ['password'],
 
       properties: {
       
@@ -36,11 +36,8 @@ module.exports = function (app) {
   db.schema.hasTable('users').then(exists => {
     if (!exists) {
       db.schema.createTable('users', table => {
-        table.increments('id');
-      
-      
+        table.increments('id');      
         table.string('googleId');
-      
         table.timestamp('createdAt');
         table.timestamp('updatedAt');
       })

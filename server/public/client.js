@@ -22,9 +22,11 @@ const login = async () => {
 
 const main = async () => {
   const auth = await login();
+  if(auth){
   const users = await getAllUsers(auth);
-  console.log('User is authenticated', auth);
-  console.log("Here are all the users", users);
+  console.log(auth)
+  console.log('User is authenticated', client.authentication);
+  }
 };
 
 async function getAllUsers(auth) {
@@ -44,8 +46,11 @@ async function getAllUsers(auth) {
   }
 }
 
-const logout = async () => {
+async function logout(){
   await client.logout();
+  if (!client.authentication.authenticated){
+    console.log('User is logged out');
+  }
 }
 
 main();
