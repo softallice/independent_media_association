@@ -1,67 +1,64 @@
-import React from 'react';
-import { LoremIpsum } from "lorem-ipsum";
-import Header from './components/Header'
-import Article from './components/Article'
-import Authentication from './components/Authentication'
-import feathers from '@feathersjs/client'
-import io from 'socket.io-client';
+import React, { useEffect } from 'react';
+import client from './feathers-client'
 
-const lorem = new LoremIpsum({
-  sentencesPerParagraph: {
-    max: 8,
-    min: 4
-  },
-  wordsPerSentence: {
-    max: 16,
-    min: 4
+//import { LoremIpsum } from "lorem-ipsum";
+
+// const lorem = new LoremIpsum({
+//   sentencesPerParagraph: {
+//     max: 8,
+//     min: 4
+//   },
+//   wordsPerSentence: {
+//     max: 16,
+//     min: 4
+//   }
+// });
+async function getUser(login){
+  const response = await fetch(`http://localhost:4000/users/${login.user.id}`, {
+    method: 'GET',
+    headers: {
+      'content-type': 'application/json',
+      'Authorization': `Bearer ${login.accessToken}`
+    },
+  });
+  console.log(response);
+  if (response.ok) {
+    const result = await response.json();
+    console.log("result", result);
+    return result;
+  } else {
+    const result = await response.json();
+    console.log(result);
+    return result.error;
   }
-});
-
-// Establish a Socket.io connection
-const socket = io('http://localhost:4000');
-
-// Initialize our Feathers client application through Socket.io
-// with hooks and authentication.
-const client = feathers();
-client.configure(feathers.socketio(socket));
-
-// Use localStorage to store our login token
-client.configure(feathers.authentication({
-  storage: window.localStorage
-}));
-
-const login = () => {
-  try {
-    //Attempting to use existing authentication
-    return client.reAuthenticate();
-  } catch (error) {
-    console.log("User is not authenticated :", error);
-  }
-};+
-
-const main = () => {
-  const auth = login();
-  if(auth){
-  // const users = await getAllUsers(auth);
-  console.log(auth)
-  console.log('User is authenticated', client.authentication);
-  }
-};
-
+}
 function App() {
+  //const [login, setIsLoggedIn] = useState(null)
+  useEffect(() => {
+
+    // Try to authenticate with the JWT stored in localStorage
+    client.authenticate().catch(() => {
+      console.log("You are not logged in");
+      //setIsLoggedIn(false) 
+    });
+
+    // On successful login
+    client.on('authenticated', login => {
+      //setIsLoggedIn(true)
+      getUser(login)
+      console.log(`You are logged in as ${login.user.name}!`)
+    })
+
+    client.on('logout', logout => {
+      console.log('You have logged out')
+    })
+
+  })
+
   return (
     <div className="Site">
-      {main()}
-      {/* {console.log(auth)} */}
-      <Header />
-      <Authentication />
-      <Article 
-        key="1"
-        title="Title"
-        byline="Derek Holtzman"
-        publishDate="9/30/2020"
-        articleBody={lorem.generateParagraphs(4)}
-      />
+      <a href='http://localhost:4000/oauth/google'>Login with Google</a>
+      <button onClick={client.logout}>Logout</button>
     </div>
   );
 }
