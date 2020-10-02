@@ -25,7 +25,7 @@
       "passwordField": "password"
     },
     "oauth": {
-      "redirect": "/",
+      "redirect": "OAUTH_REDIRECT",
       "google": {
         "key": "GOOGLE_CLIENT_ID",
         "secret": "GOOGLE_SECRET",
