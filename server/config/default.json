@@ -36,7 +36,7 @@
   },
   "postgres": {
     "client": "pg",
-    "connection": "postgres://admin:admin@localhost:5100/ima",
+    "connection": "DB_URI",
     "migrations": {
       "tableName": "knex_migrations"
     },
