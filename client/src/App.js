@@ -13,6 +13,7 @@ import client from './feathers-client'
 //     min: 4
 //   }
 // });
+
 async function getUser(login){
   const response = await fetch(`http://localhost:4000/users/${login.user.id}`, {
     method: 'GET',
