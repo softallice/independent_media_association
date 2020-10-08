@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Header() {
+function Transparency() {
     return (
         <div>
             
@@ -8,4 +8,4 @@ function Header() {
     )
 }
 
-export default Header
+export default Transparency

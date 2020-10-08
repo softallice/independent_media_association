@@ -1,7 +1,6 @@
 const { authenticate } = require('@feathersjs/authentication').hooks;
-//const knex = require('knex');
 
-
+// Adds User Type to user package sent to client
 const getUserType = () => {
   return async context => {
     const userId = context.result.id
