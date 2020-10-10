@@ -1,0 +1,24 @@
+.user-active-window-top-bar {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content:space-between;
+  align-items:baseline;
+  width:100%;
+}
+.user-active-window-top-bar h1 {
+  margin-right: 10px;
+  font-size:40px;
+}
+.user-active-window-top-bar section {
+  flex: 0 0 25%;
+  background-color:purple;
+  min-width:200px;
+}
+.user-active-window-top-bar p {
+  font-size:18px;
+}
+/* .user-active-window-dropdown-menu{
+  background-color:rgb(48, 42, 48);
+  width:150px;
+  height:25px;
+} */

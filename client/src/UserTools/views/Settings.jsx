@@ -2,9 +2,9 @@ import React from "react";
 
 function Settings() {
   return (
-    <>
-      <h3>Manage</h3>
-    </>
+    <div>
+      <h1>Settings</h1>
+    </div>
   );
 }
 
