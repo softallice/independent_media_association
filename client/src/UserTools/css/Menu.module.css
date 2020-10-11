@@ -1,0 +1,13 @@
+#menu {
+  height: 50vh;
+  display: flex;
+  flex-flow: column nowrap;
+  margin-top: 15px;
+  width: 95%;
+  display: flex;
+  align-items: center;
+}
+#submenu {
+  margin-left: 25px;
+  width: 95%;
+}

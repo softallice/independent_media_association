@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import MenuOption from "./MenuOption";
+import MenuItem from "./MenuItem";
 import {
   faNewspaper,
   faChevronRight,
@@ -12,69 +12,73 @@ import {
   faCheck,
 } from "@fortawesome/free-solid-svg-icons";
 
-function Menu({ setActiveOption }) {
-  const [subMenuExpanded, setSubMenuExpanded] = useState(false);
+import style from '../css/Menu.module.css'
+
+function Menu({ sendWindowActivate }) {
+  const [visiblity, toggleVisibility] = useState(false);
+
   const handleSubMenu = () => {
-    console.log("here!");
-    subMenuExpanded === false
-      ? setSubMenuExpanded(true)
-      : setSubMenuExpanded(false);
+    sendWindowActivate('articles')
+    visiblity === false
+      ? toggleVisibility(true)
+      : toggleVisibility(false);
   };
+
   return (
-    <>
-      <MenuOption
+    <div id={style.menu}>
+      <MenuItem
         function={() => handleSubMenu()}
         title={"Articles"}
         firstIcon={faChevronRight}
         secondIcon={faNewspaper}
       />
-      {subMenuExpanded && (
-        <div id="user-menu-article-submenu">
-          <MenuOption
-            function={() => setActiveOption("drafts")}
+      {visiblity && (
+        <div id={style.submenu}>
+          <MenuItem
+            function={() => sendWindowActivate("drafts")}
             title={"Drafts"}
             firstIcon={undefined}
             secondIcon={faPencilAlt}
           />
-          <MenuOption
-            function={() => setActiveOption("scheduled")}
+          <MenuItem
+            function={() => sendWindowActivate("scheduled")}
             title={"Scheduled"}
             firstIcon={undefined}
             secondIcon={faCalendarAlt}
           />
-          <MenuOption
-            function={() => setActiveOption("published")}
+          <MenuItem
+            function={() => sendWindowActivate("published")}
             title={"Published"}
             firstIcon={undefined}
             secondIcon={faCheck}
           />
         </div>
       )}
-      <MenuOption
-        function={() => setActiveOption("tags")}
+      <MenuItem
+        function={() => sendWindowActivate("tags")}
         title={"Tags"}
         firstIcon={undefined}
         secondIcon={faTag}
       />
-      <MenuOption
-        function={() => setActiveOption("images")}
+      <MenuItem
+        function={() => sendWindowActivate("images")}
         title={"Images"}
         firstIcon={undefined}
         secondIcon={faImages}
       />
-      <MenuOption
-        function={() => setActiveOption("staff")}
+      <MenuItem
+        function={() => sendWindowActivate("staff")}
         title={"Staff"}
         firstIcon={undefined}
         secondIcon={faUserFriends}
       />
-      <MenuOption
-        function={() => setActiveOption("settings")}
+      <MenuItem
+        function={() => sendWindowActivate("settings")}
         title={"Settings"}
         firstIcon={undefined}
         secondIcon={faCog}
       />
-    </>
+    </div>
   );
 }
 

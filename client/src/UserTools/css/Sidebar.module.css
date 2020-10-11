@@ -1,0 +1,36 @@
+#interface {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  height: 100vh;
+  z-index: 99;
+  position: absolute;
+}
+#sidebar {
+  width: 15vw;
+  min-width: 200px;
+  height: 100%;
+  color: rgb(197, 188, 196);
+  background-color: rgb(32, 29, 32);
+  display: flex;
+  flex-flow: column nowrap;
+  font-family: "Playfair Display", serif;
+  align-items: center;
+  box-shadow: 3px 0px 2px #272026;
+}
+
+#minimize {
+  height: 100%;
+  width: 24px;
+  background-color: rgb(44, 37, 44);
+  font-size: 0.8rem;
+  color: rgb(197, 188, 196);
+  box-shadow: 3px 0px 2px #272026;
+  border-radius: 0px 20px 20px 0px;
+  position: relative;
+  z-index: 98;
+}
+#welcomeMessage {
+  margin: 25px;
+  text-shadow: -1px -1px 4px #91528845;
+}

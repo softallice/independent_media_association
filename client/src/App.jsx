@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import './css/DV-Boilerplate.css'
 import './css/style.css'
 import Home from "./views/Home";
-import User from "./UserTools/User";
+import Sidebar from "./UserTools/Sidebar";
 let user = {name:'Derek Holtzman'}
 
 function App() {
@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       <Home />
-      {user ? <User logout={logout} user={user} /> : (null)}
+      {user ? <Sidebar logout={logout} user={user} /> : (null)}
     </>
   );
 }

@@ -1,0 +1,30 @@
+.row {
+  width: 95%;
+  height: 30px;
+  font-size: 1rem;
+  margin-top: 7px;
+}
+.row button {
+  width: 100%;
+  background-color: transparent;
+  color: rgb(197, 188, 196);
+  height: 100%;
+}
+.row button:hover {
+  background-color: rgb(82, 69, 82);
+}
+.title {
+  font-size: 1.1rem;
+  text-align: left;
+  width: 68%;
+  display: inline-block;
+}
+.icons {
+  font-size: 0.9rem;
+  text-align: right;
+  width: 27%;
+  display: inline-block;
+}
+.icons svg {
+  margin-right: 10px;
+}
