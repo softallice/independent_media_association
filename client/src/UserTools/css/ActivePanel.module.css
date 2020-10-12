@@ -1,61 +1,32 @@
-#user-active-window-header{
-    display:flex;
-    flex-flow:row wrap;
-    justify-content:space-between;
-    align-content:center;
-    width: 100%;
-  }
-  #user-active-window-header h1 {
-    font-size:40px;
-    margin-right:50px;
-  }
-  #user-active-window-actions{
-    display:flex;
-    flex-flow:row wrap;
-    justify-content:flex-end;
-  
-  }
-  #user-active-window-filter-bar{
-    display:flex;
-    flex-flow:row nowrap;
-    align-items:baseline;
-    font-size:16px;
-  }
-  .user-active-window-dropdown{
-    background-color:rgb(44, 40, 44);
-    width:auto;
-    height:2.5rem;
-    margin:10px 10px 0 0;
-    padding:10px;
-    text-align:center;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-  
-  .user-active-window-dropdown svg {
-    padding-left:5px;
-  }
-  
-  #user-table-things-title-bar{
-    display:flex;
-    flex-flow:row nowrap;
-  
-  }
-  
-  #user-doathingbutton {
-    background-color: #db4437;
-    border-radius: 3px;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    line-height: 2.5em;
-    font-family: 'Roboto', sans-serif;
-    font-size: 1.4rem;
-    width: 7em;
-    text-shadow: 1px 1px #13132c65;
-    color: rgb(255, 240, 240);
-  }
-  #user-doathingbutton:hover {
-    background-color: #c8473c;
-  }
-  
-  
+#panel{
+  width:80vw;
+  height:90vh;
+  box-shadow:3px 1px 1px rgba(54, 28, 54, 0.39);
+  background-color:rgb(59, 50, 59);
+  border-radius:0px 16px 16px 0px;
+  padding:35px;
+}
+#header {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+  width: 100%;
+  height:130px;
+}
+#title {
+  font-size: 30px;
+  margin-right: 50px;
+  height:100%;
+}
+#actions {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+  width:70%;
+}
+#filterBar {
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: baseline;
+  font-size: 16px;
+}

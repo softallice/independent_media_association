@@ -1,0 +1,15 @@
+.dropdown{
+    background-color:rgb(44, 40, 44);
+    width:auto;
+    height:2.5rem;
+    margin:10px 10px 0 0;
+    padding:10px;
+    text-align:center;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .dropdown svg {
+    padding-left:5px;
+  }
+  

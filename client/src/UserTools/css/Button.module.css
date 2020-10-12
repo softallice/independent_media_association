@@ -5,16 +5,24 @@
   line-height: 2.5em;
   font-family: "Roboto", sans-serif;
   font-size: 1rem;
-  text-shadow: 1px 1px #13132c65;
   color: rgb(255, 240, 240);
-  position:absolute;
 }
 .logout{
   background-color: #db4437;
   width:75%;
   position:relative;
   bottom:15%;
+  text-shadow: 1px 1px #49232365;
 }
 .logout:hover {
   background-color: #c8473c;
+}
+.addItem{
+  background-color: #603bb8;
+  width:8rem;
+  text-shadow: 1px 1px #361c3665;
+  height:4rem;
+}
+.addItem:hover {
+  background-color: #4f2a8a;
 }

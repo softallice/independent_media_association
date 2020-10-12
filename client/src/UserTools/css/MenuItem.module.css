@@ -16,13 +16,13 @@
 .title {
   font-size: 1.1rem;
   text-align: left;
-  width: 68%;
+  width: 51%;
   display: inline-block;
 }
 .icons {
   font-size: 0.9rem;
   text-align: right;
-  width: 27%;
+  width: 31%;
   display: inline-block;
 }
 .icons svg {

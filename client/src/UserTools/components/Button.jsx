@@ -3,7 +3,7 @@ import style from '../css/Button.module.css'
 
 function Button({label, clickEvent, uniqueStyle}) {
     return (
-        <button class={`${style.button} ${style[uniqueStyle]}`} onClick={clickEvent}>
+        <button className={`${style.button} ${style[uniqueStyle]}`} onClick={clickEvent}>
             {label}
         </button>
     )

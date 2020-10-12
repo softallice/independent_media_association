@@ -17,6 +17,7 @@
   font-family: "Playfair Display", serif;
   align-items: center;
   box-shadow: 3px 0px 2px #272026;
+  justify-content:space-between;
 }
 
 #minimize {
