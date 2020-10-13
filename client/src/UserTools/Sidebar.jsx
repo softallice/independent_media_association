@@ -30,7 +30,7 @@ const windows = {
   articles: Articles,
 };
 
-let minimizeIcon = <FontAwesomeIcon icon={faAngleDoubleLeft} />;
+let minimizeIcon = <FontAwesomeIcon icon={faAngleDoubleLeft} /> || null;
 
 function User({ user, logout }) {
   const firstName = user.name.split(" ").slice(0, 1);
