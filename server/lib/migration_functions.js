@@ -1,7 +1,8 @@
 const { core_module_list } = require("./tableNames");
 
 const addDefaultColumns = (table) => {
-  table.timestamps(false, true);
+  table.timestamp("createdAt");
+  table.timestamp("updatedAt");
   table.datetime("deleted_at");
 };
 
@@ -24,7 +25,8 @@ const references = (table, reference_table, nullable, customColumnName) => {
 };
 
 const createJoinTable = (knex, table_name, first_table, second_table) => {
-  const secondColumnName= (first_table === second_table) ? `reference_${first_table}` : second_table
+  const secondColumnName =
+    first_table === second_table ? `reference_${first_table}` : second_table;
   return knex.schema.createTable(table_name, (table) => {
     table.increments().notNullable();
     references(table, first_table, false);

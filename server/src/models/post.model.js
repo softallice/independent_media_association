@@ -8,16 +8,16 @@ class Post extends Model {
     return 'post';
   }
 
-  static get jsonSchema() {
-    return {
-      type: 'object',
-      required: ['text'],
+  // static get jsonSchema() {
+  //   return {
+  //     type: 'object',
+  //     required: ['text'],
 
-      properties: {
-        text: { type: 'string' }
-      }
-    };
-  }
+  //     properties: {
+  //       text: { type: 'string' }
+  //     }
+  //   };
+  // }
 
   $beforeInsert() {
     this.createdAt = this.updatedAt = new Date().toISOString();
@@ -29,7 +29,7 @@ class Post extends Model {
 }
 
 module.exports = function (app) {
-  // const db = app.get('knex');
+  const db = app.get('knex');
 
   // db.schema.hasTable('post').then(exists => {
   //   if (!exists) {
