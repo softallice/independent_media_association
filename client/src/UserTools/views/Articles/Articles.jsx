@@ -3,13 +3,7 @@ import Dropdown from "../../components/Dropdown";
 import style from "../../css/ActivePanel.module.css";
 import Button from "../../components/Button";
 
-
-import TextEditor from '../../components/TextEditor'
-
-const handleNewArticle = () => {
-  console.log("New Thingy!");
-};
-function Articles() {
+function Articles({ sendWindowActivate }) {
   return (
     <div id={style.panel}>
       <div id={style.header}>
@@ -24,12 +18,11 @@ function Articles() {
           </div>
           <Button
             label={"New Article"}
-            clickEvent={handleNewArticle}
+            clickEvent={() => sendWindowActivate("newArticle")}
             uniqueStyle={"addItem"}
           />
         </div>
       </div>
-      <TextEditor />
     </div>
   );
 }

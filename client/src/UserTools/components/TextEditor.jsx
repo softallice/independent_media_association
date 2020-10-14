@@ -5,9 +5,9 @@ import { EditorState } from "draft-js";
 
 function TextEditor() {
   const [editorState, setEditorState] = useState(EditorState.createEmpty());
-  const test = (editorState) => {
-    setEditorState(editorState)
-  }
+  const update = (editorState) => {
+    setEditorState(editorState);
+  };
   return (
     <div>
       <Editor
@@ -15,7 +15,7 @@ function TextEditor() {
         toolbarClassName="toolbarClassName"
         wrapperClassName="wrapperClassName"
         editorClassName="editorClassName"
-        onEditorStateChange={test}
+        onEditorStateChange={update}
       />
     </div>
   );

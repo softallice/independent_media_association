@@ -5,6 +5,7 @@ import './css/DV-Boilerplate.css'
 import './css/style.css'
 import Home from "./views/Home";
 import Sidebar from "./UserTools/Sidebar";
+
 let user = {name:'Derek Holtzman'}
 
 function App() {

@@ -1,16 +1,5 @@
 import React, { useState } from "react";
 import MenuItem from "./MenuItem";
-import {
-  faNewspaper,
-  faChevronRight,
-  faTag,
-  faImages,
-  faUserFriends,
-  faCog,
-  faPencilAlt,
-  faCalendarAlt,
-  faCheck,
-} from "@fortawesome/free-solid-svg-icons";
 
 import style from '../css/Menu.module.css'
 
@@ -29,8 +18,8 @@ function Menu({ sendWindowActivate }) {
       <MenuItem
         function={() => handleSubMenu()}
         title={"Articles"}
-        firstIcon={faChevronRight}
-        secondIcon={faNewspaper}
+        firstIcon='chevron-right'
+        secondIcon='newspaper'
       />
       {visiblity && (
         <div id={style.submenu}>
@@ -38,19 +27,19 @@ function Menu({ sendWindowActivate }) {
             function={() => sendWindowActivate("drafts")}
             title={"Drafts"}
             firstIcon={undefined}
-            secondIcon={faPencilAlt}
+            secondIcon='pencil-alt'
           />
           <MenuItem
             function={() => sendWindowActivate("scheduled")}
             title={"Scheduled"}
             firstIcon={undefined}
-            secondIcon={faCalendarAlt}
+            secondIcon='calendar-alt'
           />
           <MenuItem
             function={() => sendWindowActivate("published")}
             title={"Published"}
             firstIcon={undefined}
-            secondIcon={faCheck}
+            secondIcon='check'
           />
         </div>
       )}
@@ -58,25 +47,25 @@ function Menu({ sendWindowActivate }) {
         function={() => sendWindowActivate("tags")}
         title={"Tags"}
         firstIcon={undefined}
-        secondIcon={faTag}
+        secondIcon='tag'
       />
       <MenuItem
         function={() => sendWindowActivate("images")}
         title={"Images"}
         firstIcon={undefined}
-        secondIcon={faImages}
+        secondIcon='images'
       />
       <MenuItem
         function={() => sendWindowActivate("staff")}
         title={"Staff"}
         firstIcon={undefined}
-        secondIcon={faUserFriends}
+        secondIcon='user-friends'
       />
       <MenuItem
         function={() => sendWindowActivate("settings")}
         title={"Settings"}
         firstIcon={undefined}
-        secondIcon={faCog}
+        secondIcon='cog'
       />
     </div>
   );

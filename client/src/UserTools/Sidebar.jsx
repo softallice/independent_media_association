@@ -10,12 +10,11 @@ import Settings from "./views/Settings/Settings";
 import Staff from "./views/Staff/Staff";
 import Tags from "./views/Tags/Tags";
 import Articles from "./views/Articles/Articles";
+import NewArticle from "./views/Articles/NewArticle";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faAngleDoubleLeft,
-  faAngleDoubleRight,
-} from "@fortawesome/free-solid-svg-icons";
+// eslint-disable-next-line no-unused-vars
+import library from './assets/fontAwesomeLibrary'
 
 import style from "./css/Sidebar.module.css";
 
@@ -28,9 +27,10 @@ const windows = {
   staff: Staff,
   tags: Tags,
   articles: Articles,
+  newArticle: NewArticle,
 };
 
-let minimizeIcon = <FontAwesomeIcon icon={faAngleDoubleLeft} /> || null;
+let minimizeIcon = <FontAwesomeIcon icon="angle-double-left" /> || null;
 
 function User({ user, logout }) {
   const firstName = user.name.split(" ").slice(0, 1);
@@ -42,10 +42,10 @@ function User({ user, logout }) {
 
   const minimize = () => {
     if (visibility) {
-      minimizeIcon = <FontAwesomeIcon icon={faAngleDoubleRight} />;
+      minimizeIcon = <FontAwesomeIcon icon="angle-double-right" />;
       toggleVisibility(false);
     } else {
-      minimizeIcon = <FontAwesomeIcon icon={faAngleDoubleLeft} />;
+      minimizeIcon = <FontAwesomeIcon icon="angle-double-left" />;
       toggleVisibility(true);
     }
   };
@@ -66,7 +66,9 @@ function User({ user, logout }) {
       <button id={style.minimize} onClick={() => minimize()}>
         {minimizeIcon}
       </button>
-      {ActiveWindow && <ActiveWindow />}
+      {ActiveWindow && (
+        <ActiveWindow sendWindowActivate={handleWindowActivate} />
+      )}
     </section>
   );
 }
