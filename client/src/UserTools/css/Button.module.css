@@ -26,3 +26,14 @@
 .addItem:hover {
   background-color: #4f2a8a;
 }
+.goBack{
+  background-color: #130d22;
+  width:4rem;
+  text-shadow: 1px 1px #361c3665;
+  height:3rem;
+  font-size:1.5rem;
+  line-height:1.5rem;
+}
+.goBack:hover {
+  background-color: #20182c;
+}
