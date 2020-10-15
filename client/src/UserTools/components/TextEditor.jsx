@@ -1,30 +1,27 @@
-import React, { useState } from "react";
-import { Editor } from "react-draft-wysiwyg";
-import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
-import { EditorState, convertToRaw } from "draft-js";
+import React, { useState, useRef } from "react";
+import JoditEditor from "jodit-react";
 
-function TextEditor({sendContent}) {
-  const [editorState, setEditorState] = useState(EditorState.createEmpty());
-
-  const update = (editorState) => {
-    setEditorState(editorState);
+function TextEditor({ sendContent }) {
+  const editor = useRef(null);
+  const [content, setContent] = useState("");
+  const config = {
+    readOnly: false,
+    height: 200,
   };
-  const setContent = () => {
-    const content = convertToRaw(editorState.getCurrentContent());
-    sendContent(content)
+  const test = (content) => {
+      console.log(content);
   }
-
   return (
-    <div>
-      <Editor
-        editorState={editorState}
-        toolbarClassName="toolbar"
-        wrapperClassName="wrapperClassName"
-        editorClassName="editorClassName"
-        onEditorStateChange={update}
-        onBlur={setContent}
+    <>
+      <JoditEditor
+        ref={editor}
+        value={content}
+        config={config}
+        tabIndex={1}
+        onBlur={test}
+        onChange={(newContent) => {}}
       />
-    </div>
+    </>
   );
 }
 

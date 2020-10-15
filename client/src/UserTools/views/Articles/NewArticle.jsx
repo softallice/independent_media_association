@@ -11,15 +11,15 @@ function NewArticle({ sendWindowActivate }) {
   const [content, setContent] = useState('')
   const [title, setTitle] = useState('')
   const handleTitle = (event) => {
-    setTitle(event.target.value)
+    // setTitle(event.target.value)
   }
   const saveArticle = () => {
-    let body = {
-      title:title,
-      blurb:'',
-      content:content,
-    }
-    console.log(body);
+    // let body = {
+    //   title:title,
+    //   blurb:'',
+    //   content:content,
+    // }
+    // console.log(body);
   };
 
   return (
@@ -42,8 +42,8 @@ function NewArticle({ sendWindowActivate }) {
         </div>
       </div>
       <div>
-        <label name='title'>New Article:</label>
-        <input type='text' name='title' id='title' value={title} onChange={handleTitle}></input>
+        {/* <label name='title'>New Article:</label>
+        <input type='text' name='title' id='title' value={title} onChange={handleTitle}></input> */}
         <TextEditor sendContent={setContent}/>
       </div>
     </div>
