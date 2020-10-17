@@ -4,7 +4,7 @@ const compress = require('compression');
 const helmet = require('helmet');
 const cors = require('cors');
 const logger = require('./logger');
-const dotenv = require('dotenv')
+const dotenv = require('dotenv');
 
 dotenv.config();
 
@@ -12,7 +12,6 @@ const feathers = require('@feathersjs/feathers');
 const configuration = require('@feathersjs/configuration');
 const express = require('@feathersjs/express');
 const socketio = require('@feathersjs/socketio');
-
 
 const middleware = require('./middleware');
 const services = require('./services');
@@ -55,5 +54,16 @@ app.use(express.notFound());
 app.use(express.errorHandler({ logger }));
 
 app.hooks(appHooks);
+
+//Custom CORS middleware accept
+//TODO Check if this is okay
+app.use(function (req, res, next) {
+  res.header('Access-Control-Allow-Origin', 'YOUR-DOMAIN.TLD'); // update to match the domain you will make the request from
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Origin, X-Requested-With, Content-Type, Accept'
+  );
+  next();
+});
 
 module.exports = app;

@@ -67,7 +67,7 @@ function User({ user, logout }) {
         {minimizeIcon}
       </button>
       {ActiveWindow && (
-        <ActiveWindow sendWindowActivate={handleWindowActivate} />
+        <ActiveWindow user={user} sendWindowActivate={handleWindowActivate} />
       )}
     </section>
   );

@@ -1,25 +1,27 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import post from '../../api/post'
 
 import style from "../../css/ActivePanel.module.css";
 import Button from "../../components/Button";
 
 import TextEditor from "../../components/TextEditor";
-import library from '../../assets/fontAwesomeLibrary'
+// eslint-disable-next-line no-unused-vars
+import library from "../../assets/fontAwesomeLibrary";
 
-function NewArticle({ sendWindowActivate }) {
-  const [content, setContent] = useState('')
-  const [title, setTitle] = useState('')
+function NewArticle({ user, sendWindowActivate }) {
+  const [content, setContent] = useState("");
+  const [title, setTitle] = useState('(Untitled)');
   const handleTitle = (event) => {
-    // setTitle(event.target.value)
-  }
+    setTitle(event.target.value)
+  };
   const saveArticle = () => {
-    // let body = {
-    //   title:title,
-    //   blurb:'',
-    //   content:content,
-    // }
-    // console.log(body);
+    let body = {
+      title:title,
+      blurb:'',
+      content:content,
+    }
+    post('post', body, user)
   };
 
   return (
@@ -31,7 +33,7 @@ function NewArticle({ sendWindowActivate }) {
           uniqueStyle={"goBack"}
         />
         <div id={style.title}>
-          <h1>New Article</h1>
+          <input value={title} onChange={handleTitle}></input>
         </div>
         <div id={style.actions}>
           <Button
@@ -41,11 +43,7 @@ function NewArticle({ sendWindowActivate }) {
           />
         </div>
       </div>
-      <div>
-        {/* <label name='title'>New Article:</label>
-        <input type='text' name='title' id='title' value={title} onChange={handleTitle}></input> */}
-        <TextEditor sendContent={setContent}/>
-      </div>
+      <TextEditor sendContent={setContent} />
     </div>
   );
 }
