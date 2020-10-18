@@ -9,7 +9,7 @@ import TextEditor from "../../components/TextEditor";
 // eslint-disable-next-line no-unused-vars
 import library from "../../assets/fontAwesomeLibrary";
 
-function NewArticle({ user, sendWindowActivate }) {
+function New({ user, sendWindowActivate }) {
   const [content, setContent] = useState("");
   const [title, setTitle] = useState('(Untitled)');
   const handleTitle = (event) => {
@@ -48,4 +48,4 @@ function NewArticle({ user, sendWindowActivate }) {
   );
 }
 
-export default NewArticle;
+export default New;

@@ -1,0 +1,12 @@
+#header{
+    height:50px;
+    width:90%;
+    display:flex;
+    flex-flow:row nowrap;
+    justify-content:space-between;
+    background-color:rgb(32, 8, 32);
+}
+#header h6{
+    width:30%;
+    font-size:24px;
+}

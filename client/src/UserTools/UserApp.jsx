@@ -10,7 +10,7 @@ import Settings from "./views/Settings/Settings";
 import Staff from "./views/Staff/Staff";
 import Tags from "./views/Tags/Tags";
 import Articles from "./views/Articles/Articles";
-import NewArticle from "./views/Articles/NewArticle";
+import New from "./views/Articles/New";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 // eslint-disable-next-line no-unused-vars
@@ -27,7 +27,7 @@ const windows = {
   staff: Staff,
   tags: Tags,
   articles: Articles,
-  newArticle: NewArticle,
+  newArticle: New,
 };
 
 let minimizeIcon = <FontAwesomeIcon icon="angle-double-left" /> || null;

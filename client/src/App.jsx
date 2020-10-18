@@ -4,7 +4,7 @@ import client from "./authentication/feathersClient";
 import './css/DV-Boilerplate.css'
 import './css/style.css'
 import Home from "./views/Home";
-import Sidebar from "./UserTools/Sidebar";
+import UserApp from "./UserTools/UserApp";
 
 function App() {
   let [user, setUser] = useState(null);
@@ -27,7 +27,7 @@ function App() {
   return (
     <>
       <Home />
-      {user ? <Sidebar logout={logout} user={user} /> : (null)}
+      {user ? <UserApp logout={logout} user={user} /> : (null)}
     </>
   );
 }

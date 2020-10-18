@@ -1,13 +1,12 @@
 import { apiUrl } from '../../lib/constants';
 
-export default async function post(endpoint, body) {
+export default async function getAll(endpoint) {
   const response = await fetch(`${apiUrl}/${endpoint}`, {
-    method: 'POST',
+    method: 'GET',
     headers: {
       'content-type': 'application/json',
       Authorization: `Bearer ${localStorage["feathers-jwt"]}`,
     },
-    body: JSON.stringify(body),
   });
   if (response.ok) {
     const result = await response.json();
