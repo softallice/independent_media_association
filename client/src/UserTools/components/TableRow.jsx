@@ -1,7 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { ViewContext } from '../context/ViewContextLayer';
+
+import style from '../css/TableRow.module.css';
 
 function TableRow({ row }) {
-  return <div>{row.title}</div>;
+  const { setPost, setView } = useContext(ViewContext);
+
+  return (
+    <div
+      onClick={() => {
+        setView('edit');
+        setPost(row);
+      }}
+      className={style.row}
+    >
+      {row.title}
+    </div>
+  );
 }
 
 export default TableRow;

@@ -1,57 +1,32 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from 'react';
+import { ViewContext } from './context/ViewContextLayer';
+import { UserContext } from './context/UserContextLayer';
 
-import Menu from "./components/Menu";
-import Button from "./components/Button";
-import Draft from "./views/Articles/Draft";
-import Scheduled from "./views/Articles/Scheduled";
-import Images from "./views/Images/Images";
-import Published from "./views/Articles/Published";
-import Settings from "./views/Settings/Settings";
-import Staff from "./views/Staff/Staff";
-import Tags from "./views/Tags/Tags";
-import Articles from "./views/Articles/Articles";
-import New from "./views/Articles/New";
+import Menu from './components/Menu';
+import Button from './components/Button';
 
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // eslint-disable-next-line no-unused-vars
-import library from './assets/fontAwesomeLibrary'
+import library from './assets/fontAwesomeLibrary';
+import style from './css/Sidebar.module.css';
 
-import style from "./css/Sidebar.module.css";
 
-const windows = {
-  drafts: Draft,
-  scheduled: Scheduled,
-  images: Images,
-  published: Published,
-  settings: Settings,
-  staff: Staff,
-  tags: Tags,
-  articles: Articles,
-  newArticle: New,
-};
-
-let minimizeIcon = <FontAwesomeIcon icon="angle-double-left" /> || null;
-
-function User({ user, logout }) {
-  const firstName = user.name.split(" ").slice(0, 1);
+function User() {
   let [visibility, toggleVisibility] = useState(true);
-  // Retrieved from Menu Component - Based Off Button Clicked
-  let [openWindow, setOpenWindow] = useState(null);
-  // Variable Option Window Display Definition
-  const ActiveWindow = windows[openWindow];
+  let [minimizeIcon, setMinimizeIcon] = useState(
+    <FontAwesomeIcon icon='angle-double-left' />
+  );
+  const { firstName, logout } = useContext(UserContext);
+  const { ActiveWindow } = useContext(ViewContext);
 
   const minimize = () => {
     if (visibility) {
-      minimizeIcon = <FontAwesomeIcon icon="angle-double-right" />;
+      setMinimizeIcon(<FontAwesomeIcon icon='angle-double-right' />);
       toggleVisibility(false);
     } else {
-      minimizeIcon = <FontAwesomeIcon icon="angle-double-left" />;
+      setMinimizeIcon(<FontAwesomeIcon icon='angle-double-left' />);
       toggleVisibility(true);
     }
-  };
-
-  const handleWindowActivate = (selected) => {
-    selected === openWindow ? setOpenWindow(null) : setOpenWindow(selected);
   };
 
   return (
@@ -59,16 +34,16 @@ function User({ user, logout }) {
       {visibility && (
         <section id={style.sidebar}>
           <h1 id={style.welcomeMessage}>Welcome, {firstName}</h1>
-          <Menu sendWindowActivate={handleWindowActivate} />
-          <Button uniqueStyle={"logout"} label={"Logout"} clickEvent={logout} />
+          <Menu />
+          <Button uniqueStyle={'logout'} label={'Logout'} clickEvent={logout} />
         </section>
       )}
-      <button id={style.minimize} onClick={() => minimize()}>
-        {minimizeIcon}
-      </button>
-      {ActiveWindow && (
-        <ActiveWindow user={user} sendWindowActivate={handleWindowActivate} />
-      )}
+      <Button
+        uniqueStyle={'minimize'}
+        label={minimizeIcon}
+        clickEvent={() => minimize()}
+      />
+      {ActiveWindow && <ActiveWindow />}
     </section>
   );
 }

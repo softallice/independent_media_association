@@ -1,49 +1,57 @@
-import React, { useState } from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import post from '../../api/post'
+import React, { useState, useEffect, useContext } from 'react';
+import { ViewContext } from '../../context/ViewContextLayer';
 
-import style from "../../css/ActivePanel.module.css";
-import Button from "../../components/Button";
+// import getOne from '../../api/getOne';
 
-import TextEditor from "../../components/TextEditor";
+import Button from '../../components/Button';
+import TextEditor from '../../components/TextEditor';
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // eslint-disable-next-line no-unused-vars
-import library from "../../assets/fontAwesomeLibrary";
+import library from '../../assets/fontAwesomeLibrary';
+import style from '../../css/ActivePanel.module.css';
 
-function Edit({ user, sendWindowActivate }) {
-  const [content, setContent] = useState("");
+function Edit() {
+  const [content, setContent] = useState('');
   const [title, setTitle] = useState('(Untitled)');
+  const { setView, post } = useContext(ViewContext);
+  // console.log(post);
+  // useEffect(() => {
+  //   setContent(post.content);
+  // },[post]);
+
   const handleTitle = (event) => {
-    setTitle(event.target.value)
+    // setTitle(event.target.value);
   };
   const saveArticle = () => {
-    let body = {
-      title:title,
-      blurb:'',
-      content:content,
-    }
-    post('post', body, user)
+    // let body = {
+    //   title:title,
+    //   blurb:'',
+    //   content:content,
+    // }
+    // post('post', body)
   };
 
   return (
     <div id={style.panel}>
       <div id={style.header}>
         <Button
-          label={<FontAwesomeIcon icon="angle-double-left" />}
-          clickEvent={() => sendWindowActivate("articles")}
-          uniqueStyle={"goBack"}
+          label={<FontAwesomeIcon icon='angle-double-left' />}
+          clickEvent={() => setView('articles')}
+          uniqueStyle={'goBack'}
         />
         <div id={style.title}>
           <input value={title} onChange={handleTitle}></input>
         </div>
         <div id={style.actions}>
           <Button
-            label={"Save Edits"}
+            label={'Save Edits'}
             clickEvent={saveArticle}
-            uniqueStyle={"addItem"}
+            uniqueStyle={'addItem'}
           />
         </div>
       </div>
-      <TextEditor sendContent={setContent} />
+      <TextEditor asdf={post.content} sendContent={setContent} />
     </div>
   );
 }

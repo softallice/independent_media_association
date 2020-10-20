@@ -37,6 +37,7 @@ exports.up = async (knex) => {
     table.string('title').notNullable();
     table.string('blurb', 500);
     table.text('content');
+    table.text('status');
     addDefaultColumns(table);
   });
 };

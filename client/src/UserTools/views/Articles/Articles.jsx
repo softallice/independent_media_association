@@ -1,14 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import {ViewContext} from '../../context/ViewContextLayer'
+
 import getAll from '../../api/getAll';
-import style from '../../css/ActivePanel.module.css';
 
 import Dropdown from '../../components/Dropdown';
 import Button from '../../components/Button';
 import Table from '../../components/Table';
 
-function Articles({ sendWindowActivate }) {
-  let [posts, definePosts] = useState('');
+import style from '../../css/ActivePanel.module.css';
 
+function Articles() {
+  let [posts, definePosts] = useState('');
+  let {setView} = useContext(ViewContext)
   useEffect(() => {
     async function getPosts() {
       definePosts(await getAll('post'));
@@ -30,7 +33,7 @@ function Articles({ sendWindowActivate }) {
           </div>
           <Button
             label={'New Article'}
-            clickEvent={() => sendWindowActivate('newArticle')}
+            clickEvent={() => setView('newArticle')}
             uniqueStyle={'addItem'}
           />
         </div>
