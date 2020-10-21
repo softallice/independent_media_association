@@ -16,21 +16,22 @@ const login = async () => {
     //Attempting to use existing authentication
     return await client.reAuthenticate();
   } catch (error) {
-    console.log("User is not authenticated :", error);
+    console.log('fail');
+    console.log('User is not authenticated :', error);
   }
 };
 
 const main = async () => {
   const auth = await login();
   if(auth){
-  const users = await getAllUsers(auth);
-  console.log(auth)
-  console.log('User is authenticated', client.authentication);
+    const users = await getAllUsers(auth);
+    console.log(auth);
+    console.log('User is authenticated', client.authentication);
   }
 };
 
 async function getAllUsers(auth) {
-  const response = await fetch(`/users`, {
+  const response = await fetch('/users', {
     method: 'GET',
     headers: {
       'content-type': 'application/json',

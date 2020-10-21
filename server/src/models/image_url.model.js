@@ -28,22 +28,6 @@ class ImageUrl extends Model {
   }
 }
 
-module.exports = function (app) {
-  // const db = app.get('knex');
-
-  // db.schema.hasTable('image_url').then(exists => {
-  //   if (!exists) {
-  //     db.schema.createTable('image_url', table => {
-  //       table.increments('id');
-  //       table.string('text');
-  //       table.timestamp('createdAt');
-  //       table.timestamp('updatedAt');
-  //     })
-  //       .then(() => console.log('Created image_url table')) // eslint-disable-line no-console
-  //       .catch(e => console.error('Error creating image_url table', e)); // eslint-disable-line no-console
-  //   }
-  // })
-  //   .catch(e => console.error('Error creating image_url table', e)); // eslint-disable-line no-console
-
+module.exports = function () {
   return ImageUrl;
 };

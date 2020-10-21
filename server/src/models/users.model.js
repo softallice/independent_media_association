@@ -15,7 +15,7 @@ class Users extends Model {
 
       properties: {
       
-        googleId: { type: 'string' },
+        email: { type: 'string' },
       
       }
     };
@@ -38,6 +38,7 @@ module.exports = function (app) {
       db.schema.createTable('users', table => {
         table.increments('id');      
         table.string('googleId');
+        table.string('email');
         table.timestamp('createdAt');
         table.timestamp('updatedAt');
       })

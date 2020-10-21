@@ -28,22 +28,6 @@ class UserType extends Model {
   }
 }
 
-module.exports = function (app) {
-  // const db = app.get('knex');
-
-  // db.schema.hasTable('user_type').then(exists => {
-  //   if (!exists) {
-  //     db.schema.createTable('user_type', table => {
-  //       table.increments('id');
-  //       table.string('text');
-  //       table.timestamp('createdAt');
-  //       table.timestamp('updatedAt');
-  //     })
-  //       .then(() => console.log('Created user_type table')) // eslint-disable-line no-console
-  //       .catch(e => console.error('Error creating user_type table', e)); // eslint-disable-line no-console
-  //   }
-  // })
-  //   .catch(e => console.error('Error creating user_type table', e)); // eslint-disable-line no-console
-
+module.exports = function () {
   return UserType;
 };

@@ -1,15 +1,13 @@
-const { core_module_list } = require("./tableNames");
-
 const addDefaultColumns = (table) => {
-  table.timestamp("createdAt");
-  table.timestamp("updatedAt");
-  table.datetime("deleted_at");
+  table.timestamp('createdAt');
+  table.timestamp('updatedAt');
+  table.datetime('deleted_at');
 };
 
 const createNameTable = (knex, table_name) => {
   return knex.schema.createTable(table_name, (table) => {
     table.increments().notNullable();
-    table.string("name").notNullable().unique();
+    table.string('name').notNullable().unique();
     addDefaultColumns(table);
   });
 };
@@ -18,9 +16,9 @@ const references = (table, reference_table, nullable, customColumnName) => {
   table
     .integer(`${customColumnName || reference_table}_id`)
     .unsigned()
-    .references("id")
+    .references('id')
     .inTable(reference_table)
-    .onDelete("cascade")
+    .onDelete('cascade')
     .nullable(nullable);
 };
 
@@ -38,7 +36,7 @@ const createJoinTable = (knex, table_name, first_table, second_table) => {
 const createTimeTables = (knex, table_name, reference_table) => {
   return knex.schema.createTable(table_name, (table) => {
     table.increments().notNullable();
-    table.integer("count").notNullable().unique();
+    table.integer('count').notNullable().unique();
     references(table, reference_table, false);
     addDefaultColumns(table);
   });

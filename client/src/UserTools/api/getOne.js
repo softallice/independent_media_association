@@ -1,6 +1,6 @@
 import { apiUrl } from '../../lib/constants';
 
-export default async function getOne(endpoint, id) {
+export default async function apiGetOne(endpoint, id) {
   const response = await fetch(`${apiUrl}/${endpoint}/${id}`, {
     method: 'GET',
     headers: {

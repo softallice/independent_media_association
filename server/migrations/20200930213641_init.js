@@ -7,15 +7,9 @@ const {
 
 exports.up = async (knex) => {
   await Promise.all([
-    knex.schema.createTable(tableNames.author, (table) => {
-      table.increments().notNullable();
-      table.string('name').notNullable().defaultTo('Anonymous');
-      table.string('email').unique();
-      addDefaultColumns(table);
-    }),
-    createNameTable(knex, tableNames.keywords),
+    createNameTable(knex, tableNames.tag),
     createNameTable(knex, tableNames.user_type),
-    knex.schema.createTable(tableNames.admin_site_preferences, (table) => {
+    knex.schema.createTable(tableNames.site_preferences, (table) => {
       table.increments().notNullable();
       table.boolean('featured-content-shown').notNullable().defaultTo(0);
       addDefaultColumns(table);
@@ -29,15 +23,17 @@ exports.up = async (knex) => {
   });
   await knex.schema.createTable(tableNames.user_preferences, (table) => {
     table.increments().notNullable();
-    table.string('theme').notNullable().defaultTo('White');
+    table.string('theme').notNullable().defaultTo('Snow');
     addDefaultColumns(table);
   });
-  await knex.schema.createTable(tableNames.post, (table) => {
+  await knex.schema.createTable(tableNames.article, (table) => {
     table.increments().notNullable();
     table.string('title').notNullable();
     table.string('blurb', 500);
-    table.text('content');
-    table.text('status');
+    table.text('content').notNullable();
+    table.text('status').notNullable();
+    table.text('slug').notNullable();
+    table.boolean('featured').notNullable().defaultTo(false);
     addDefaultColumns(table);
   });
 };
@@ -45,13 +41,12 @@ exports.up = async (knex) => {
 exports.down = async (knex) => {
   await Promise.all(
     [
-      tableNames.keywords,
-      tableNames.admin_site_preferences,
+      tableNames.tag,
+      tableNames.site_preferences,
       tableNames.image_url,
-      tableNames.author,
       tableNames.user_type,
       tableNames.user_preferences,
-      tableNames.post,
+      tableNames.article,
     ].map((tableName) => knex.schema.dropTable(tableName))
   );
 };

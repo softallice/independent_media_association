@@ -4,7 +4,7 @@ import { UserContextLayer } from './context/UserContextLayer';
 import UserApp from './UserApp';
 
 function ContextLayers() {
-  const [authed, setAuthed] = useState(true);
+  const [authed, setAuthed] = useState(false);
 
   return (
     <>

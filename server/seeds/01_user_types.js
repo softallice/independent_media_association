@@ -6,8 +6,9 @@ exports.seed = function(knex) {
       // Inserts seed entries
       return knex('user_type').insert([
         {id: 1, name: 'admin'},
-        {id: 2, name: 'user'},
-        {id: 3, name: 'author'}
+        {id: 2, name: 'editor'},
+        {id: 3, name: 'author'},
+        {id: 4, name: 'guest_author'}
       ]);
     });
 };

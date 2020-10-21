@@ -1,15 +1,14 @@
 exports.seed = function (knex) {
   // Deletes ALL existing entries
-  return knex("users")
+  return knex('users')
     .del()
     .then(function () {
       // Inserts seed entries
-      return knex("users").insert([
+      return knex('users').insert([
         {
           id: 1,
           createdAt: knex.fn.now(),
           updatedAt: knex.fn.now(),
-          googleId: process.env.WEB_ADMIN_GOOGLEID,
           name: process.env.WEB_ADMIN_NAME,
           email: process.env.WEB_ADMIN_EMAIL,
           portrait_url: process.env.WEB_ADMIN_PORTRAIT_URL,

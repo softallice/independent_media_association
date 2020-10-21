@@ -1,6 +1,6 @@
 import { apiUrl } from '../../lib/constants';
 
-export default async function post(endpoint, body) {
+export default async function apiPost(endpoint, body) {
   const response = await fetch(`${apiUrl}/${endpoint}`, {
     method: 'POST',
     headers: {

@@ -10,7 +10,7 @@
     "entity": "user",
     "service": "users",
     "secret": "JWT_SECRET",
-    "authStrategies": ["jwt", "local"],
+    "authStrategies": ["jwt"],
     "jwtOptions": {
       "header": {
         "typ": "access"
@@ -20,16 +20,12 @@
       "algorithm": "HS256",
       "expiresIn": "1000d"
     },
-    "local": {
-      "usernameField": "email",
-      "passwordField": "password"
-    },
     "oauth": {
       "redirect": "OAUTH_REDIRECT",
       "google": {
         "key": "GOOGLE_CLIENT_ID",
         "secret": "GOOGLE_SECRET",
-        "scope": ["email", "profile", "openid"],
+        "scope": ["openid", "email", "profile"],
         "nonce": true
       }
     }

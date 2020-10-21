@@ -9,7 +9,7 @@ function TableRow({ row }) {
   return (
     <div
       onClick={() => {
-        setView('edit');
+        setView('author');
         setPost(row);
       }}
       className={style.row}

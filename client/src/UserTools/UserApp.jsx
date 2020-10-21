@@ -10,14 +10,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import library from './assets/fontAwesomeLibrary';
 import style from './css/Sidebar.module.css';
 
-
 function User() {
   let [visibility, toggleVisibility] = useState(true);
   let [minimizeIcon, setMinimizeIcon] = useState(
     <FontAwesomeIcon icon='angle-double-left' />
   );
-  const { firstName, logout } = useContext(UserContext);
-  const { ActiveWindow } = useContext(ViewContext);
+  const { user, firstName, logout } = useContext(UserContext);
+  const { ActiveWindow, setView } = useContext(ViewContext);
 
   const minimize = () => {
     if (visibility) {
@@ -43,7 +42,7 @@ function User() {
         label={minimizeIcon}
         clickEvent={() => minimize()}
       />
-      {ActiveWindow && <ActiveWindow />}
+      {ActiveWindow && <ActiveWindow user={user} setView={setView} />}
     </section>
   );
 }

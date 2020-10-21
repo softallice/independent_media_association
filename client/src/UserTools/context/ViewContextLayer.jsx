@@ -8,8 +8,7 @@ import Settings from '../views/Settings/Settings';
 import Staff from '../views/Staff/Staff';
 import Tags from '../views/Tags/Tags';
 import Articles from '../views/Articles/Articles';
-import New from '../views/Articles/New';
-import Edit from '../views/Articles/Edit';
+import Author from '../views/Articles/Author';
 
 const ViewContext = React.createContext();
 
@@ -22,8 +21,7 @@ let viewReducer = {
   staff: Staff,
   tags: Tags,
   articles: Articles,
-  newArticle: New,
-  edit: Edit,
+  author: Author,
 };
 
 function ViewContextLayer({ children }) {

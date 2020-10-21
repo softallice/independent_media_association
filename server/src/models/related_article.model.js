@@ -2,10 +2,10 @@
 // for more of what you can do here.
 const { Model } = require('objection');
 
-class UserPreferences extends Model {
+class RelatedArticle extends Model {
 
   static get tableName() {
-    return 'user_preferences';
+    return 'related_article';
   }
 
   static get jsonSchema() {
@@ -29,5 +29,5 @@ class UserPreferences extends Model {
 }
 
 module.exports = function () {
-  return UserPreferences;
+  return RelatedArticle;
 };

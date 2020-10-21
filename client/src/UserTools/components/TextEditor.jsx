@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 
-function TextEditor({sendContent, asdf}) {
+function TextEditor({sendContent, initialContent}) {
   const [content, setContent] = useState("Begin writing here...");
   const handleChange = (body) => {
     setContent(body);
@@ -19,7 +19,7 @@ function TextEditor({sendContent, asdf}) {
   // console.log(wordcount.selection.getCharacterCountWithoutSpaces());
   return (
     <Editor
-      initialValue = {asdf || null}
+      initialValue = {initialContent || null}
       onBlur={() => sendContent(content)}
       onEditorChange={handleChange}
       apiKey="1raai0z8qt1d6zcpx0f6nx1dxvxet0hukf3y9oz4d8cg1o75"

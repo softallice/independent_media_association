@@ -5,7 +5,7 @@ import MenuItem from './MenuItem';
 
 import style from '../css/Menu.module.css';
 
-function Menu({ sendWindowActivate }) {
+function Menu() {
   const [visiblity, toggleVisibility] = useState(false);
   const { setView } = useContext(ViewContext);
 

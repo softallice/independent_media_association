@@ -1,13 +1,13 @@
 import { apiUrl } from '../../lib/constants';
 
-export default async function apiGetAll(endpoint) {
-  const response = await fetch(`${apiUrl}/${endpoint}`, {
-    method: 'GET',
+export default async function apiPatch(endpoint, id, body) {
+    const response = await fetch(`${apiUrl}/${endpoint}/${id}`, {
+    method: 'PATCH',
     headers: {
       'content-type': 'application/json',
-      'Origin':'http://localhost:3000/#',
       Authorization: `Bearer ${localStorage["feathers-jwt"]}`,
     },
+    body: JSON.stringify(body),
   });
   if (response.ok) {
     const result = await response.json();

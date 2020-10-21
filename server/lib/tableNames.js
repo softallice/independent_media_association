@@ -1,19 +1,18 @@
 module.exports = {
-    post: "post",
-    user_preferences: "user_preferences",
-    user_type: "user_type",
-    author: "author",
-    image_url: "image_url",
-    join__image_and_post: "join__image_and_post",
-    join__keywords_and_images: "join__keywords_and_images",
-    join__post_and_author: "join__post_and_author",
-    join__post_and_images: "join__post_and_images",
-    join__post_and_keywords: "join__post_and_keywords",
-    join__users_and_user_preferences: "join__users_and_user_preferences",
-    join__users_and_user_type: "join__users_and_user_type",
-    keywords: "keywords",
-    related_post: "related_post",
-    admin_site_preferences:"admin_site_preferences",
-    users:"users"
-  };
+  article: 'article',
+  user_preferences: 'user_preferences',
+  user_type: 'user_type',
+  image_url: 'image_url',
+  join__image_and_article: 'join__image_and_article',
+  join__tag_and_image: 'join__tag_and_image',
+  join__article_and_user: 'join__article_and_user',
+  join__article_and_image: 'join__article_and_image',
+  join__article_and_tag: 'join__article_and_tag',
+  join__users_and_user_preferences: 'join__users_and_user_preferences',
+  join__users_and_user_type: 'join__users_and_user_type',
+  tag: 'tag',
+  related_article: 'related_article',
+  site_preferences:'site_preferences',
+  users:'users'
+};
 
