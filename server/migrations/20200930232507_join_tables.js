@@ -1,4 +1,3 @@
-// const Knex = require("knex");
 const tableNames = require('../lib/tableNames');
 const {
   createJoinTable,

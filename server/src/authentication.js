@@ -2,9 +2,9 @@ const { AuthenticationService, JWTStrategy } = require('@feathersjs/authenticati
 
 const { expressOauth } = require('@feathersjs/authentication-oauth');
 const { OAuthStrategy } = require('@feathersjs/authentication-oauth');
-
 class GoogleStrategy extends OAuthStrategy {
   async getEntityData(profile) {
+    console.log("auth");
     const baseData = await super.getEntityData(profile);
     return {
       ...baseData,
