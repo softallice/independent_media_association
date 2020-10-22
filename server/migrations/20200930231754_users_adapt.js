@@ -1,9 +1,10 @@
 exports.up = function (knex) {
   return knex.schema.table('users', (table) => {
-    table.string('name').notNullable();
+    table.string('name');
     table.string('portrait_url');
     table.string('title');
     table.datetime('deleted_at');
+    table.boolean('active');
   });
 };
 
@@ -13,5 +14,6 @@ exports.down = function (knex) {
     table.dropColumn('title');
     table.dropColumn('portrait_url');
     table.dropColumn('deleted_at');
+    table.boolean('active');
   });
 };

@@ -16,7 +16,6 @@ const login = async () => {
     //Attempting to use existing authentication
     return await client.reAuthenticate();
   } catch (error) {
-    console.log('fail');
     console.log('User is not authenticated :', error);
   }
 };

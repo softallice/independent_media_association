@@ -5,7 +5,7 @@ exports.seed = function(knex) {
     .then(function () {
       // Inserts seed entries
       return knex('join__users_and_user_type').insert([
-        {id: 1, users_id: '1', user_type_id:'1'},
+        {id: 1, users_id: process.env.ADMIN_USER_DB_ID_NUMBER, user_type_id:'1'},
       ]);
     });
 };

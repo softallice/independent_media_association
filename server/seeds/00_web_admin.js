@@ -6,12 +6,12 @@ exports.seed = function (knex) {
       // Inserts seed entries
       return knex('users').insert([
         {
-          id: 1,
+          id: process.env.ADMIN_USER_DB_ID_NUMBER,
           createdAt: knex.fn.now(),
           updatedAt: knex.fn.now(),
-          name: process.env.WEB_ADMIN_NAME,
           email: process.env.WEB_ADMIN_EMAIL,
-          portrait_url: process.env.WEB_ADMIN_PORTRAIT_URL,
+          active:true,
+          title:'Web Administrator'
         },
       ]);
     });
