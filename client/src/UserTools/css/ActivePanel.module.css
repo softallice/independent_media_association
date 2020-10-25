@@ -29,3 +29,9 @@
   align-items: baseline;
   font-size: 16px;
 }
+#main{
+  width:calc(100% - 200px);
+  display:flex;
+  flex-flow: row nowrap;
+  
+}

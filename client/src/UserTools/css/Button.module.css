@@ -49,3 +49,14 @@
   position: relative;
   z-index: 98;
 }
+.hamburger{
+  width: 24px;
+  background-color: transparent;
+  font-size: 1.5rem;
+  color: rgb(197, 188, 196);
+  position: relative;
+  z-index: 98;
+}
+.hamburger:hover {
+  color: #20182c;
+}

@@ -5,7 +5,8 @@ const helmet = require('helmet');
 const cors = require('cors');
 const logger = require('./logger');
 const dotenv = require('dotenv');
-
+//TODO Delete Morgan??
+const morgan = require('morgan');
 dotenv.config();
 
 const feathers = require('@feathersjs/feathers');
@@ -28,7 +29,8 @@ const app = express(feathers());
 app.configure(configuration());
 // Enable security, CORS, compression, favicon and body parsing
 app.use(helmet());
-app.use(cors());
+app.use(cors({origin:process.env.CLIENT_DOMAIN}));
+
 app.use(compress());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -54,16 +56,5 @@ app.use(express.notFound());
 app.use(express.errorHandler({ logger }));
 
 app.hooks(appHooks);
-
-//Custom CORS middleware accept
-//TODO Check if this is okay
-app.use(function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://localhost:3000/#'); // update to match the domain you will make the request from
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Origin, X-Requested-With, Content-Type, Accept'
-  );
-  next();
-});
 
 module.exports = app;

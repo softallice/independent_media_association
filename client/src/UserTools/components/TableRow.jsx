@@ -4,13 +4,13 @@ import { ViewContext } from '../context/ViewContextLayer';
 import style from '../css/TableRow.module.css';
 
 function TableRow({ row }) {
-  const { setPost, setView } = useContext(ViewContext);
+  const { setArticle, setView } = useContext(ViewContext);
 
   return (
     <div
       onClick={() => {
         setView('author');
-        setPost(row);
+        setArticle(row);
       }}
       className={style.row}
     >

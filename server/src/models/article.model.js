@@ -8,16 +8,16 @@ class Article extends Model {
     return 'article';
   }
 
-  static get jsonSchema() {
-    return {
-      type: 'object',
-      required: ['text'],
+  // static get jsonSchema() {
+  //   return {
+  //     type: 'object',
+  //     required: ['text'],
 
-      properties: {
-        text: { type: 'string' }
-      }
-    };
-  }
+  //     properties: {
+  //       text: { type: 'string' }
+  //     }
+  //   };
+  // }
 
   $beforeInsert() {
     this.createdAt = this.updatedAt = new Date().toISOString();

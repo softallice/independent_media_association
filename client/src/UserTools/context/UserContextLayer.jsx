@@ -4,12 +4,10 @@ import client from '../../authentication/feathersClient';
 const UserContext = React.createContext();
 
 function UserContextLayer({ children, setAuthed }) {
-  let [user, setUser] = useState();
-    // { name: 'Derek' }
+  let [user, setUser] = useState({ name: 'Derek' });
   const firstName = user?.name.split(' ').slice(0, 1);
 
   useEffect(() => {
-    console.log(user);
     client
       .reAuthenticate()
       .then((user) => {

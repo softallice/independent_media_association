@@ -12,6 +12,7 @@ import {
   faCalendarAlt,
   faCheck,
   faChevronDown,
+  faBars,
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(
@@ -26,7 +27,8 @@ library.add(
   faPencilAlt,
   faCalendarAlt,
   faCheck,
-  faChevronDown
+  faChevronDown,
+  faBars,
 );
 
 export default library;

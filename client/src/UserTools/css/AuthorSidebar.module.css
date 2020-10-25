@@ -1,0 +1,8 @@
+#bar{
+    width:200px;
+    position:absolute;
+    left:calc(100% - 200px);
+    background-color:purple;
+    height:50%;
+    z-index: 99;
+}

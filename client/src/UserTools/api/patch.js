@@ -1,6 +1,6 @@
 import { apiUrl } from '../../lib/constants';
 
-export default async function apiPatch(endpoint, id, body) {
+export default async function apiPatch(endpoint, body, id) {
     const response = await fetch(`${apiUrl}/${endpoint}/${id}`, {
     method: 'PATCH',
     headers: {
