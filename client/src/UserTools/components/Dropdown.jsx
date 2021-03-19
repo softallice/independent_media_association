@@ -4,7 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import library from '../assets/fontAwesomeLibrary';
 import style from '../css/Dropdown.module.css';
 
-function Dropdown({ options }) {
+function Dropdown({ type, setFilter, options }) {
   const [visible, setVisibility] = useState(false);
   const [value, setValue] = useState(options[0]);
 
@@ -13,21 +13,27 @@ function Dropdown({ options }) {
   };
   const select = (selection) => {
     setVisibility(false);
-    setValue(selection)
+    setValue(selection);
+    setFilter(type, selection)
   };
+
   return (
     <>
-      <div className={style.dropdown} onClick={openMenu}>
-        {value}
-        <FontAwesomeIcon icon='chevron-down' />
-      </div>
-      {visible && (
-        <section>
+      {!visible ? (
+        <div className={style.selection} onClick={openMenu}>
+          {value}
+          <FontAwesomeIcon icon='chevron-down' />
+        </div>
+      ) : (
+        <section className={style.dropdown}>
           {options.map((option) => (
-            <div key={option} className={style.dropdown} onClick={() => select(option)}>
+            <option
+              key={option}
+              className={style.selection}
+              onClick={() => select(option)}
+            >
               {option}
-              <FontAwesomeIcon icon='chevron-down' />
-            </div>
+            </option>
           ))}
         </section>
       )}

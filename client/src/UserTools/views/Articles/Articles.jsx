@@ -1,36 +1,24 @@
-import React, { useEffect, useState, useContext } from 'react';
-import { ViewContext } from '../../context/ViewContextLayer';
+import React from 'react';
 
-import usePromise from '../../hooks/usePromise'
-import apiGetAll from '../../api/getAll';
+import useGetRequest from '../../api/Get';
 
-
+// import Search from '../../components/Search'
+import Loading from '../../components/Loading'
 import Dropdown from '../../components/Dropdown';
 import Button from '../../components/Button';
 import Table from '../../components/Table';
+import {articleStatuses, sortParameters} from '../../lib/constants.js'
 
 import style from '../../css/ActivePanel.module.css';
-// apiGetAll('article')
+
 //TODO Add 'Draft', 'Scheduled' & 'Published' to this
 function Articles({ setView }) {
-  // const [result, error, isLoading] = usePromise(() => fetch(`http://localhost:4000/article`).then(r => r.text()))
-  const { setArticle } = useContext(ViewContext);
-  let [articles, setAllArticles] = useState([]);
+  let filter = {status:'All status', authors:'All authors', tags:'All Tags', sort:'Newest'}
+  const { data, loading, error } = useGetRequest('article', filter);
 
-  const [error, setError] = useState('');
-  useEffect(() => {
-    apiGetAll('article')
-    // let isSubscribed = true;
-    // apiGetAll('article').then(articles => console.log('Displaying this data: ', articles))
-      // .then(articles => (isSubscribed ? setAllArticles(articles) : null))
-      // .catch(error => (isSubscribed ? setError(error.toString()) : null));
-    // return () => (isSubscribed = false);
-  }, []);
-
-  useEffect(() => {
-    //Clears previously loaded article from cache in preparation for 'New Article'
-    setArticle('');
-  });
+  const setFilters = (type, option) => {
+    filter[type] = option
+  }
 
   return (
     <div id={style.panel}>
@@ -41,10 +29,10 @@ function Articles({ setView }) {
         <div id={style.actions}>
           <div id={style.filterBar}>
             {/* TODO Make these filters functional */}
-            <Dropdown options={['All status']} />
-            <Dropdown options={['All authors']} />
-            <Dropdown options={['All tags']} />
-            <Dropdown options={['Sort by: Newest']} />
+            <Dropdown setFilter={setFilters} type={'status'} options={articleStatuses} />
+            {/* <Search setFilter={setFilters}/>
+            <Search setFilter={setFilters}/> */}
+            <Dropdown setFilter={setFilters} type={'sort'} options={sortParameters}/>
           </div>
           <Button
             label={'New Article'}
@@ -53,13 +41,17 @@ function Articles({ setView }) {
           />
         </div>
       </div>
-      {error && <h4>{error.message}</h4>}
-      <Table
-        data={articles.data}
-        columns={['Article', 'Status', 'Last Updated']}
-      />
+      {loading && <Loading />}
+      {error && <h3>{error.message}</h3>} 
+      {data && (
+        <Table
+          data={data.data}
+          columns={['Article', 'Status', 'Last Updated']}
+        />
+      )}
     </div>
   );
 }
+
 
 export default Articles;

@@ -13,7 +13,7 @@ module.exports = {
 
   after: {
     all: [],
-    find: [],
+    find: [(context) => console.log(context.result.data)],
     get: [],
     create: [],
     update: [],
